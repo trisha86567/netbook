@@ -4,9 +4,9 @@ const User = require("../models/users")
 module.exports.home = async function (req,res) {
     try {
         let posts = await Post.find({})
-        .populate('usser')
+        .populate('user')
         .populate({
-            path:'comsments',
+            path:'comments',
             populate:{
                 path:'user'
             }

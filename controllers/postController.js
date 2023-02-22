@@ -10,6 +10,7 @@ module.exports.create = function (req,res) {
         if(err){
             console.log(err);
         }
+        req.flash('success',"Post publushed")
         return res.redirect("back")
        
     })
@@ -21,6 +22,7 @@ module.exports.destroy = function (req,res) {
         if(post.user==req.user.id){
             post.remove();
             Comment.deleteMany({post:req.params.id},function(err){
+                req.flash('success',"Post Deletedd")
                 return res.redirect("back")
             })
         }else{
