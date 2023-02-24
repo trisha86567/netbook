@@ -26,7 +26,7 @@ const userSchema = new mongoose.Schema({
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, path.join(__dirname + '..' + AVATAR_PATH ))
+      cb(null, path.join(__dirname , '..' , AVATAR_PATH ))
     },
     filename: function (req, file, cb) {
       cb(null, file.fieldname + '-' + Date.now())
