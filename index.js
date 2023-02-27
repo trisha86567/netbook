@@ -18,6 +18,7 @@ const customMware = require('./config/middleware');
 var passport = require('passport');
 var session = require('express-session');
 const passportLocal = require('./config/passport-local-strategy')
+const passportJWT = require('./config/passport-jwt-strategy');
 app.use(express.static('./assets'));
 app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(session({
@@ -35,6 +36,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(passport.setAuthenticatedUser);
+
 app.use(flash());
 app.use(customMware.setFlash);
 app.use(expressLayouts)
