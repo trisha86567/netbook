@@ -15,7 +15,15 @@ router.post('/signin', passport.authenticate(
 ), userController.signInUser);
 router.get('/sign-out', userController.logout);
 
-router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
-router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/users/sign-in'}), userController.signInUser);
+// router.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+// router.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/users/sign-in'}), userController.signInUser);
+
+
+router.get('/auth/google',
+  passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+router.get('/auth/google/callback', 
+  passport.authenticate('google', { failureRedirect: '/users/sign-in' }),
+  userController.signInUser);
 
 module.exports = router;
