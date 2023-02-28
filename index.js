@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 3000
+const port = 8000
 const multer  = require('multer')
 const db = require('./config/mongoose')
 const MongoStore = require('connect-mongo');
@@ -19,6 +19,7 @@ var passport = require('passport');
 var session = require('express-session');
 const passportLocal = require('./config/passport-local-strategy')
 const passportJWT = require('./config/passport-jwt-strategy');
+const passportGoogle = require('./config/passport-google-oauth2-strategy');
 app.use(express.static('./assets'));
 app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(session({

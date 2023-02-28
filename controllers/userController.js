@@ -77,7 +77,7 @@ module.exports.createSession = function (req,res) {
     if(!user){
         User.create(req.body,function(err,user){
             if(err){
-                console.log(error);
+                console.log(err);
                 return;
             }
             return res.redirect('back')
