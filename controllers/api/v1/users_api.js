@@ -12,7 +12,7 @@ module.exports.signInUser = async function (req,res) {
         }
         return res.json(200,{
             message:"here is your token please keept is safe",
-            data:{token:jwt.sign(user.toJSON(),secret,{expiresIn:'1000000'})}
+            data:{token:jwt.sign(user.toJSON(),"secret",{expiresIn:'1000000'})}
             })
 
         

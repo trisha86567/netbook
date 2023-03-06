@@ -18,7 +18,7 @@ module.exports.create = async function (req,res) {
             post.save()
             req.flash("success","comment published")
            
-            commentsMailer.newComment(comment);
+            //commentsMailer.newComment(comment);
             res.redirect('/');
         
     }

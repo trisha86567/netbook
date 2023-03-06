@@ -2,19 +2,39 @@ const Comment = require("../models/comments");
 const Post = require("../models/posts")
 
 
-module.exports.create = function (req,res) {
-    Post.create({
+module.exports.create = async function (req,res) {
+try {
+
+      let post= await Post.create({
         content:req.body.content,
         user:req.user._id
-    },function(err,post){
-        if(err){
-            console.log(err);
-        }
-        req.flash('success',"Post publushed")
+    })
+    // function(err,post){
+    //     if(err){
+    //         console.log(err);
+    //     }
+
+    req.flash('success',"Post publushed");
+    
+       if(req,xhr){
+       return res.json(200,{
+        data:{
+        post:post
+        },
+            message:"post & comment deleted"
+    })
+}
+
+    
         return res.redirect("back")
        
-    })
-} 
+   // }
+    
+} catch (error) {
+return res.redirect('back');
+}
+
+}
 
 module.exports.destroy = function (req,res) {
     console.log(req.params.id);
